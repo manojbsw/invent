@@ -31,8 +31,8 @@ var configData = JSON.parse(fs.readFileSync(configFile, 'utf8'));
 var app = express();
 
     app.use(executorlib.init());
-    app.use(bodyParser.json({ limit: '200mb' }));
-    app.use(bodyParser.urlencoded({ extended: true, limit: '200mb' }));
+    app.use(bodyParser.json({limit: '50mb'}));
+    app.use(bodyParser.urlencoded({ extended: true }));
     app.use(helmet());
     app.use(Constants.STOCK_TICKER_SERVICE_API_DOCS, swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
