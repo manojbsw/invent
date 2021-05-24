@@ -124,10 +124,14 @@ components:
       properties:
         email:
           type: string
+          format: email
           description: email of the user
           example: john@gmail.com
         password:
           type: string
+          format: password
+          minLength: 3
+          maxLength: 30
           description: Alphanumeric string with minimum 3 and maximum 30 character
           example: abcd1234
     LoginResponse:
