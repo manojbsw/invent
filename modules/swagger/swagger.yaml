@@ -145,8 +145,9 @@ components:
           example: TCS
         date:
           type: string
+          format: date
           description: Date on which stock price to be searched (YYYY-MM-DD)
-          example: 2021-05-20
+          example: "2021-05-20"
 
     StockResponse:
       type: object
