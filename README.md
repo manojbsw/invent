@@ -25,16 +25,17 @@ Implementation of this service is done in layered architecture like router and s
 
 # Setting up application
 We can setup this applicatoin either pulling image from docker hub or create new image.
-1. Pull image from docker hub using:
+1. Pull image from docker hub using
    
-   a. docker pull <image_path>
+   docker pull manojjain/stock-ticker:1.0.0
+    
 2. Clone the code base from git location:https://github.com/manojbsw/stock-ticker.git
    
    a. Build new image. Change current directory to cloned codebase.   
-      docker build -t invent/stock-ticker .
+      docker build -t manojjain/stock-ticker:1.0.0 .
 3. Start application using docker run.
    
-   docker run docker run -d -p 8443:8443 -v /<host_machine_dir>/logs:/stock-ticker/logs invent/stock-ticker   
+   docker run docker run -d -p 8443:8443 -v /<host_machine_dir>/logs:/stock-ticker/logs manojjain/stock-ticker:1.0.0   
 4. Access the application using openAPI url https://<host>:8443/api-docs/  
 
 # Prerequisite for application setup  
