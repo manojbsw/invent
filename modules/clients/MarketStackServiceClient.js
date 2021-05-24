@@ -9,6 +9,7 @@
 // load configuration details
 const fs = require('fs');
 const logger = require('../utils/Logger');
+const moment = require('moment');
 const RestClient = require('./RestClient');
 var ErrorCodes = require('../commons/ErrorCodes');
 var StockTickerError = require('../commons/StockTickerError');
@@ -45,7 +46,7 @@ module.exports = {
           volume:data.volume,
           symbol:data.symbol,
           exchange:data.exchange,
-          date:data.date
+          date:moment(data.date).format('YYYY-MM-DD')
         };
         resolve(response);
       }
