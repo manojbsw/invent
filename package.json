@@ -1,0 +1,45 @@
+{
+  "name": "stock-ticker",
+  "version": "1.0.0",
+  "description": "A service to get stock prices from stock exchange",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "mocha test/index.test.js --timeout 25000 --exit",
+    "coverage": "istanbul cover node_modules/mocha/bin/_mocha -- test/index.test.js --timeout 25000 --exit"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/services/stock-ticker"
+  },
+  "keywords": [
+    "Stock",
+    "Ticker"
+  ],
+  "author": "Manoj Jain",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "chokidar": "^3.5.1",
+    "cls-hooked": "^4.2.2",
+    "express": "4.17.1",
+    "helmet": "3.21.1",
+    "joi": "^17.3.0",
+    "lodash": "^4.17.19",
+    "morgan": "^1.9.1",
+    "os-utils": "0.0.14",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5",
+    "shortid": "^2.2.14",
+    "swagger-ui-express": "4.1.1",
+    "winston": "^2.2",
+    "yamljs": "0.3.0",
+    "jsonwebtoken": "^8.5.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "istanbul": "latest",
+    "mocha": "^6.0.0",
+    "sinon": "^9.0.1"
+  }
+}
