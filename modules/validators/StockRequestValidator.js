@@ -10,7 +10,7 @@ const Joi = require('joi');
 
 const stockTickerSearch = Joi.object().keys({
     symbol: Joi.string().trim().min(3).max(8).required(),
-    date: Joi.date().max(new Date())
+    date: Joi.date().iso('YYYY-MM-DD').max(new Date()).message('Date must be in YYYY-MM-DD format and should not be greater than today\'s date')
 });
 
 module.exports = { stockTickerSearch}
