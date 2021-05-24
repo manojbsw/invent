@@ -1,0 +1,20 @@
+{
+  "logLevel": "info",
+  "logsDir": "logs",
+  "logFilePrefix": "sticker",
+  "logFileSize": 10000000,
+  "numberOfLogFiles": 10,
+  "accessLogFileSize":10000000,
+
+  "port": 8443,
+  
+  "certificateKeyFile": "certs/selfsigned.key",
+  "certificateFile": "certs/selfsigned.crt",
+
+  "marketStackSrviceURL":"http://api.marketstack.com",
+  "marketStackAccessKey":"a0e343b1100748ca0d10a0c3e51dacb5",
+
+  "jwtTokenExpiry": 1800,
+  "DEPLOYMENT_MODE":"production"
+
+  }

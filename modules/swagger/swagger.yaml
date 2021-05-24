@@ -1,0 +1,192 @@
+openapi: 3.0.0
+info:
+  version: 1.0.0
+  title: Stock Ticker service APIs
+  description: APIs to create user, login and fetching stock price of a given stock symbol.
+tags:
+   - name: Stock Ticker
+     description: APIs to fetch stock prices
+   - name: User
+     description: APIs to create user and authentication.      
+security:
+  - bearerAuth: []
+paths:
+  /api/v1/ticker/eod:
+    post:
+      tags:
+        - Stock Ticker
+      summary: Fetch stock details of given stock symbol.
+      description: Fetch stock details of given stock symbol.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/StockRequest'
+        required: true
+      responses:
+        '200':
+          description: Stock details fetched
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StockResponse'
+        '400':
+          description: Indicates that the request is a bad request to fetch stock details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Indicates that the request to fetch stock details is not authorized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Indicates that an internal error is encountered when trying to fetch stock details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/user:
+    post:
+      tags:
+        - User
+      summary: Create new user.
+      description: Create new user using emailId as user name.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUser'
+        required: true
+      responses:
+        '201':
+          description: The user successfully created.
+        '400':
+          description: Indicates that the request is a bad request to create user.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /api/v1/user/login:
+    post:
+      tags:
+        - User
+      summary: API to login.
+      description: API to login, Response of this API will return acces token which is used to call other API's.
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUser'
+        required: true
+      responses:
+        '200':
+          description: User successfully logged in.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '400':
+          description: Indicates that the request is a bad request to login.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Invalid credentials.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: 500 response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+  schemas:
+    CreateUser:
+      type: object
+      properties:
+        email:
+          type: string
+          description: email of the user
+          example: john@gmail.com
+        password:
+          type: string
+          description: Alphanumeric string with minimum 3 and maximum 30 character
+          example: abcd1234
+    LoginResponse:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          description: Security token used to access other API's
+    StockRequest:
+      type: object
+      properties:
+        symbol:
+          type: string
+          description: Stock symbol
+          example: TCS
+        date:
+          type: string
+          description: Date on which stock price to be searched (YYYY-MM-DD)
+          example: 2021-05-20
+
+    StockResponse:
+      type: object
+      properties:
+        open:
+          type: number
+          description: Opening price of the day
+          example: 30.01
+        close:
+          type: number
+          description: Closing price of the day
+          example: 30.01
+        low:
+          type: number
+          description: Lowest price of the day
+          example: 29.86
+        high:
+          type: number
+          description: Highest price of the day
+          example: 30.24
+        volume:
+          type: number
+          description: Volume traded in a day
+          example: 74569629
+        symbol:
+          type: string
+          description: Stock symbol
+          example: TCS
+        exchange:
+          type: string
+          description: Exchange in which stock traded
+          example: XNYS
+        date:
+          type: string
+          description: Trade date
+          example: 2021-05-21T00:00:00+0000
+
+    ErrorResponse:
+      properties:
+        errormessage:
+          type: string
+        errorcode:
+          type: string
