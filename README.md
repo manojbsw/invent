@@ -35,7 +35,7 @@ We can setup this applicatoin either pulling image from docker hub or create new
       docker build -t manojjain/stock-ticker:1.0.0 .
 3. Start application using docker run.
    
-   docker run docker run -d -p 8443:8443 -v /<host_machine_dir>/logs:/stock-ticker/logs manojjain/stock-ticker:1.0.0   
+   docker run -d -p 8443:8443 -v /<host_machine_dir>/logs:/stock-ticker/logs manojjain/stock-ticker:1.0.0   
 4. Access the application using openAPI url https://<host>:8443/api-docs/  
 
 # Prerequisite for application setup  
