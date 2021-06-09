@@ -7,7 +7,7 @@ API's are exposed through swagger.
 1. Register user <ap/v1/user> : User needs to register with emailId and password. 
 2. User Login </api/v1/user/login>: User can login with emailId and password. In response we will get access token which will be used by other REST API for authentication.
 3. Get End Of Day stock price: This API is used to get the stock prices of given stock symbol and date (format:YYYY-MM-DD).
-   In order to authenticate this API user needs to acess token.    
+   In order to authenticate this API user needs to pass acess token.    
 4. OpenAPI's are exposed through swagger. Can be access using URL https://<host>:8443/api-docs/
 
 # Implementation Details
